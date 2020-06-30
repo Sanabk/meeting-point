@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
+const User = require('./user')
 
 const locationShcema = new mongoose.Schema({
-    location: {
+    message: {
         type: String
     },
     latitude: {
@@ -9,6 +10,19 @@ const locationShcema = new mongoose.Schema({
     }, 
     longitude: {
         type: Number
+    },
+    from: {
+        type: String,
+    },
+    sender: {
+        type: mongoose.SchemaTypes.ObjectId,
+        required: true,
+        ref: 'User'
+    },
+    receiver: {
+        type: String,
+        required: true,
+
     }
 },{
     timestamps: true
